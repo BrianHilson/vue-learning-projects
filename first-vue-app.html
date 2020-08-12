@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue App</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<h1>Vue examples</h1>
+
+<h2>Hello World</h2>
+<div id="app-1">
+  {{ message }}
+</div>
+<script>
+  var app1 = new Vue({
+    el: '#app-1',
+    data: {
+      message: 'Hello World!'
+    }
+  });
+</script>
+
+<h2>Binding attributes (title in this case)</h2>
+<div id="app-2">
+  <span v-bind:title="message">
+    Hover your mouse over me to see my dynamically bound title!
+  </span>
+</div>
+<script>
+
+  var app2 = new Vue({
+    el: '#app-2',
+    data: {
+      message: 'Page loaded on ' + new Date().toLocaleString()
+    }
+  });
+</script>
+
+<h2>Conditionals and Loops</h2>
+<h3>If Statements</h3>
+<div id="app-3">
+  <span v-if="seen">Now you see me.</span>
+</div>
+<script>
+
+  var app3 = new Vue({
+    el: '#app-3',
+    data: {
+      seen: true
+    }
+  })
+
+</script>
+
+<h3>Loops</h3>
+<div id="app-4">
+  <ol>
+    <li v-for="todo in todos">
+      {{ todo.text }}
+    </li>
+  </ol>
+</div>
+<script>
+
+var app4 = new Vue({
+  el: '#app-4',
+  data: {
+    todos: [
+      { text: 'Apply for new job.'},
+      { text: 'Take out garbage.'},
+      { text: 'Sweep kitchen.'}
+    ]
+  } 
+})
+
+</script>
+
+<h2>Handling User Input</h2>
+
+<div id="app-5">
+  <p>{{ message }}</p>
+  <button v-on:click="reverseMessage">Reverse the message</button>
+</div>
+<script>
+
+  var app5 = new Vue({
+    el: '#app-5',
+    data: {
+      message: 'Here\'s a message to reverse.'
+    },
+    methods: {
+      reverseMessage: function() {
+        this.message = this.message.split('').reverse().join('');
+      }
+    }
+  })
+
+</script>
+
+</body>
+</html>
