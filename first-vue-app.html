@@ -78,7 +78,7 @@ var app4 = new Vue({
 </script>
 
 <h2>Handling User Input</h2>
-
+<h3>v-on</h3>
 <div id="app-5">
   <p>{{ message }}</p>
   <button v-on:click="reverseMessage">Reverse the message</button>
@@ -97,6 +97,135 @@ var app4 = new Vue({
     }
   })
 
+</script>
+
+<h3>v-model</h3>
+
+<div id="app-6">
+  <p>{{ message }}</p>
+  <input type="number" v-model="message">
+</div>
+
+<script>
+
+  var app6 = new Vue({
+    el: '#app-6',
+    data: {
+      message: 1
+    }
+  });
+
+</script>
+
+<h2>Composing with Components</h2>
+<div id="app-7">
+<ol>
+  <todo-item
+    v-for="item in groceryList"
+    v-bind:todo="item"
+    v-bind:key="item.id"
+  ></todo-item>
+</ol>
+</div>
+
+<script>
+  Vue.component('todo-item', {
+    props: ['todo'],
+    template: '<li>{{ todo.text }}</li>'
+  })
+
+  var app7 = new Vue({
+    el: '#app-7',
+    data: {
+      groceryList: [
+        { id: 0, text: 'Pie' },
+        { id: 1, text: 'Cookies' },
+        { id: 2, text: 'Something else that people eat'}
+      ]
+    }
+  })
+</script>
+
+<h2>Freezing an Object to prevent changes</h2>
+
+<div id="app-8">
+  <p>{{ time }}</p>
+  <button v-on:click="time = new Date()">Update time</button>
+</div>
+
+<script>
+
+var obj = {
+  time: new Date()
+}
+
+Object.freeze(obj)
+
+new Vue({
+  el: '#app-8',
+  data: obj
+})
+
+</script>
+
+<h2>Instance Properties</h2>
+<div id="example">
+</div>
+<script>
+
+var data = { a: 1 }
+var vm = new Vue({
+  el: '#example',
+  data: data
+})
+
+</script>
+
+<h2>Instance Lifecycle Hooks</h2>
+<script>
+
+var lifeCycle = new Vue({
+  data: {
+    a: 1
+  },
+  created: function () {
+    // `this` points to the vm instance
+    console.log('created, a is: ' + this.a)
+  },
+  mounted: function () {
+    console.log('mounted, a is:' + this.a);
+  },
+  updated: function () {
+    console.log('updated, a is:' + this.a);
+  },
+  destroyed: function () {
+    console.log('destroyed, a is:' + this.a);
+  },
+})
+
+</script>
+
+<h2>Template Syntax</h2>
+
+<h3>Text</h3>
+
+<div id="app-9">
+  <div>Message: {{ message }}</div>
+  <div v-once>Message that never changes because of v-once: {{ message }}</div>
+  <button v-on:click="message = 'Some new message'">Change message</button>
+</div>
+
+<script>
+
+var app9 = new Vue({
+  el: '#app-9',
+  data: {
+    message: 'Here\'s a message'
+  }
+})
+
+
+// Start here, with examples of functionality https://vuejs.org/v2/guide/syntax.html#Raw-HTML
 </script>
 
 </body>
