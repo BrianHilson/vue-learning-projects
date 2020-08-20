@@ -63,7 +63,6 @@
   </ol>
 </div>
 <script>
-
 var app4 = new Vue({
   el: '#app-4',
   data: {
@@ -100,12 +99,10 @@ var app4 = new Vue({
 </script>
 
 <h3>v-model</h3>
-
 <div id="app-6">
   <p>{{ message }}</p>
   <input type="number" v-model="message">
 </div>
-
 <script>
 
   var app6 = new Vue({
@@ -119,15 +116,14 @@ var app4 = new Vue({
 
 <h2>Composing with Components</h2>
 <div id="app-7">
-<ol>
-  <todo-item
-    v-for="item in groceryList"
-    v-bind:todo="item"
-    v-bind:key="item.id"
-  ></todo-item>
-</ol>
+  <ol>
+    <todo-item
+      v-for="item in groceryList"
+      v-bind:todo="item"
+      v-bind:key="item.id"
+    ></todo-item>
+  </ol>
 </div>
-
 <script>
   Vue.component('todo-item', {
     props: ['todo'],
@@ -147,12 +143,10 @@ var app4 = new Vue({
 </script>
 
 <h2>Freezing an Object to prevent changes</h2>
-
 <div id="app-8">
   <p>{{ time }}</p>
   <button v-on:click="time = new Date()">Update time</button>
 </div>
-
 <script>
 
 var obj = {
@@ -183,7 +177,6 @@ var vm = new Vue({
 
 <h2>Instance Lifecycle Hooks</h2>
 <script>
-
 var lifeCycle = new Vue({
   data: {
     a: 1
@@ -206,15 +199,17 @@ var lifeCycle = new Vue({
 </script>
 
 <h2>Template Syntax</h2>
+<p><strong>Interpolations</strong></p>
+<p>Definition according to Merriam-Websters:<br>
+-  something that is introduced or inserted : an insertion or addition<br>
+- act of interpolating something or the state of being interpolated : the introduction or insertion of something spurious or foreign</p>
 
 <h3>Text</h3>
-
 <div id="app-9">
   <div>Message: {{ message }}</div>
   <div v-once>Message that never changes because of v-once: {{ message }}</div>
   <button v-on:click="message = 'Some new message'">Change message</button>
 </div>
-
 <script>
 
 var app9 = new Vue({
@@ -224,9 +219,46 @@ var app9 = new Vue({
   }
 })
 
-
-// Start here, with examples of functionality https://vuejs.org/v2/guide/syntax.html#Raw-HTML
 </script>
 
+<h3>Raw HTML</h3>
+<div id="app-10">
+  <p>Using mustaches: {{ rawHtml }}</p>
+  <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+</div>
+<script>
+
+var app10 = new Vue({
+  el: '#app-10',
+  data: {
+    rawHtml: '<span style="color:blue;">Some blue text</span>'
+  }
+});
+
+</script>
+
+<h3>Attributes</h3>
+<style>
+  .hidden {
+    display: none;
+  }
+</style>
+<div id="app-11">
+  <div>The text below is hidden</div>
+  <div v-bind:class="{ hidden: isHidden }">Some text to hide</div>
+  <button v-bind:disabled="{ isDisabled }">A disabled button</button>
+</div>
+<script>
+
+var app11 = new Vue({
+  el: '#app-11',
+  data: {
+    isHidden: true,
+    isDisabled: true
+  }
+});
+
+// Start here: https://vuejs.org/v2/guide/syntax.html#Using-JavaScript-Expressions
+</script>
 </body>
 </html>
