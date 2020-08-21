@@ -258,7 +258,95 @@ var app11 = new Vue({
   }
 });
 
-// Start here: https://vuejs.org/v2/guide/syntax.html#Using-JavaScript-Expressions
 </script>
+
+<h3>Using JavaScript Expressions</h3>
+<div id="app-12">
+  <div>{{ 'Product name: ' + productName }}</div>
+  <div>{{ 'Price: ' + ((productPrice * taxRate) / 100).toFixed(2) }}</div>
+  <div>{{ available ? 'Available' : 'Out of stock' }}</div>
+</div>
+<script>
+
+  var app12 = new Vue({
+    el: '#app-12',
+    data: {
+      productName: 'Fancy widget',
+      productPrice: 19999,
+      taxRate: 1.055,
+      available: true
+    }
+  })
+
+</script>
+
+<h2>Directives</h2>
+<h3>Arguments</h3>
+<div id="app-13">
+  <a v-bind:href="url">Some link</a>
+<button v-on:click="handleClick">{{ buttonText }}</button>
+</div>
+<script>
+
+  var app13 = new Vue({
+    el: '#app-13',
+    data: {
+      url: 'https://hilson.io',
+      buttonText: 'Click me!'
+    },
+    methods: {
+      handleClick: function() {
+        this.buttonText = 'I have been clicked!';
+      }
+    }
+  })
+
+</script>
+
+<h3>Dynamic arguments</h3>
+<div id="app-14">
+  <p>Number of times an event has been triggered: {{ count }}</p>
+  <!-- Camelcase and kebab case won't work here, so use snake case -->
+  <button v-on:[some_event]="triggerButton">A button</button>
+</div>
+<script>
+
+  var app14 = new Vue({
+    el: '#app-14',
+    data: {
+      count: 0,
+      some_event: "mouseover"
+    },
+    methods: {
+      triggerButton: function() {
+        this.count++;
+      }
+    }
+  })
+
+</script>
+
+<h3>Modifiers</h3>
+<div id="app-15">
+  <form v-on:submit.prevent="submitForm">
+    <p>{{ message }}</p>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+<script>
+  var app15 = new Vue({
+    el: '#app-15',
+    data: {
+      message: ''
+    },
+    methods: {
+      submitForm: function() {
+        this.message = 'This form was prevented from submitting.'
+      }
+    }
+  });
+</script>
+
+<!-- start here https://vuejs.org/v2/guide/syntax.html#Shorthands -->
 </body>
 </html>
