@@ -465,6 +465,83 @@ var app11 = new Vue({
   })
 </script>
 
-<!-- Start with: https://vuejs.org/v2/guide/computed.html#Watchers -->
+<h3>Watchers</h3>
+<div id="app-21">
+  <p>Ask a yes/no question.<br>
+    <input v-model="question">
+  </p>
+  <p>{{ answer }}</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+<script>
+  var app21 = new Vue ({
+    el: '#app-21',
+    data: {
+      question: '',
+      answer: 'Please ask a question.'
+    },
+    watch: {
+      question: function(oldQuestion, newQuestion) {
+        this.answer = 'Waiting until you\'re done typing...';
+        this.debouncedGetAnswer();
+      }
+    },
+    created: function() {
+      this.debouncedGetAnswer = _.debounce(this.getAnswer, 500);
+    },
+    methods: {
+      getAnswer: function() {
+        if (this.question.indexOf('?') === -1) {
+          this.answer = 'Please ask a question.'
+          return
+        }
+
+        this.answer = 'Thinking...';
+        var vm = this;
+        axios.get('https://yesno.wtf/api')
+          .then(function(response) {
+            vm.answer = _.capitalize(response.data.answer);
+            conosle.log('here');
+          })
+          .catch(function (error) {
+            vm.anwer = 'Hmm, api seems to be not responding.'
+          });
+      }
+    }
+  })
+</script>
+
+<h2>Class and Style Bindings</h2>
+<h3>Binding HTML Classes</h3>
+<h4>Object Syntax</h4>
+<style>
+  div.normal {
+    color: grey;
+  }
+
+  div.active {
+    color: green;
+  }
+
+  div.active.danger {
+    color: red;
+  }
+</style>
+<div id="app-22">
+  <div 
+    class="normal"
+    v-bind:class="{ active: isActive, danger: hasError}"
+  >Some text</div>
+</div>
+<script>
+  var app22 = new Vue ({
+    el: '#app-22',
+    data: {
+      isActive: true,
+      hasError: false
+    }
+  })
+</script>
 </body>
 </html>
