@@ -601,5 +601,40 @@ var app11 = new Vue({
     }
   })
 </script>
+
+<h3>Conditional Rendering</h3>
+<h4>v-if, v-else</h4>
+<div id="app-25">
+  <p v-if="showMessage">Some message which may display</p>
+  <p v-if="showMessage">Another message which may display</p>
+  <p v-else>Message not displaying, so show this</p>
+</div>
+<script>
+  var app25 = new Vue ({
+    el: '#app-25',
+    data: {
+      showMessage: true
+    }
+  })
+</script>
+
+<h4>v-else-if</h4>
+<div id="app-26">
+  <p v-if="paragraphToShow === 'a'">A</p>
+  <p v-else-if="paragraphToShow === 'b'">B</p>
+  <p v-else-if="paragraphToShow === 'c'">C</p>
+  <p v-else>Something other than a, b, or c</p>
+</div>
+<script>
+  var app26 = new Vue ({
+    el: '#app-26',
+    data: {
+      paragraphToShow: 'a'
+    }
+  })
+</script>
+
+<!-- Start with: https://vuejs.org/v2/guide/conditional.html#Controlling-Reusable-Elements-with-key
+file:///Users/hilsonbj/Desktop/programming/github/vue-learning-projects/first-vue-app.html -->
 </body>
 </html>
