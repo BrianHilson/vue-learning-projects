@@ -543,5 +543,63 @@ var app11 = new Vue({
     }
   })
 </script>
+
+<h4>Array syntax</h4>
+<style>
+  .low-importance {
+    color: blue;
+  }
+
+  .high-importance {
+    color: purple;
+  }
+
+  .visible {
+    visibility: visible;
+  }
+
+  .hidden {
+    visibility: hidden;
+  }
+</style>
+<div id="app-23">
+  <div v-bind:class="[importance, visibility]">A message which may be important, or not</div>
+</div>
+<script>
+  var app23 = new Vue ({
+    el: '#app-23 ',
+    data: {
+      importance: 'high-importance',
+      visibility: 'visible'
+    }
+  })
+</script>
+
+<h3>Binding Inline Styles</h3>
+<h4>Object Syntax</h4>
+<div id="app-24">
+  <div v-bind:style="{ color: thisColor, fontSize: fontSize + 'px' }">Some inline styles</div>
+  <div v-bind:style="baseStyles">Using an object in the data properties instead</div>
+  <div v-bind:style="[ baseStyles, extraStyles ]">Using array syntax with styles</div>
+</div>
+<script>
+  var app24 = new Vue ({
+    el: '#app-24',
+    data: {
+      thisColor: 'orange',
+      fontSize: '25',
+      baseStyles: {
+        color: 'green',
+        fontSize: '22px',
+        letterSpacing: '3px'
+      },
+      extraStyles: {
+        backgroundColor: 'black',
+        color: 'white',
+        boxShadow: '2px 2px 2px #000'
+      }
+    }
+  })
+</script>
 </body>
 </html>
