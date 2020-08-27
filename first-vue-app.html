@@ -634,7 +634,110 @@ var app11 = new Vue({
   })
 </script>
 
-<!-- Start with: https://vuejs.org/v2/guide/conditional.html#Controlling-Reusable-Elements-with-key
+<h4>Controlling Reusable Elements with key</h4>
+<h5>Elements being reused, for efficiency and usability</h5>
+<div id="app-27">
+  <template v-if="searchType === 'name'">
+    <label for="name">Name</label>
+    <input type="text" placeholder="Search for user by name" name="name" id="name">
+  </template>
+  <template v-else>
+    <label for="phoneNumber">Phone number</label>
+    <input type="text" placeholder="Search for user by phone number" name="phoneNumber" id="phoneNumber">
+  </template><br>
+  <button v-on:click="(searchType === 'name') ? searchType = 'other' : searchType = 'name'">Change search type</button>
+</div>
+<script>
+
+  var app27 = new Vue ({
+    el: '#app-27',
+    data: {
+      searchType: 'name'
+    }
+  })
+
+</script>
+<h5>Elements being replaced by using key</h5>
+<div id="app-28">
+  <template v-if="searchType === 'name'">
+    <label for="name">Name</label>
+    <input type="text" placeholder="Search for user by name" name="name" id="name" key="name-input">
+  </template>
+  <template v-else>
+    <label for="phoneNumber">Phone number</label>
+    <input type="text" placeholder="Search for user by phone number" name="phoneNumber" id="phoneNumber" key="phone-number-input">
+  </template><br>
+  <button v-on:click="(searchType === 'name') ? searchType = 'other' : searchType = 'name'">Change search type</button>
+</div>
+<script>
+
+  var app28 = new Vue ({
+    el: '#app-28',
+    data: {
+      searchType: 'name'
+    }
+  })
+
+</script>
+
+<h3>v-show</h3>
+<div id="app-29">
+  <p v-show="display">Some text which may be displayed</p>
+</div>
+<script>
+  var app29 = new Vue ({
+    el: '#app-29',
+    data: {
+      display: true
+    }
+  })
+</script>
+
+<h2>List Rendering</h2>
+<h3>Mapping an Array to Elements with v-for</h3>
+<h4>Minimal example</h4>
+<div id="app-30">
+  <ul>
+    <li v-for="fruit in fruits">
+      {{ fruit.name }}
+    </li>
+  </ul>
+</div>
+<script>
+  var app30 = new Vue ({
+    el: '#app-30',
+    data: {
+      fruits: [
+        { name: 'apple' },
+        { name: 'pear' },
+        { name: 'banana' }
+      ]
+    }
+  })
+</script>
+
+<h4>Example with index</h4>
+<div id="app-31">
+  <ul>
+    <li v-for="(fruit, index) of fruits">
+      {{ 'Fruit: ' + fruit.name + ', Index: ' + index + ', Company: ' + company }}
+    </li>
+  </ul>
+</div>
+<script>
+  var app31 = new Vue ({
+    el: '#app-31',
+    data: {
+      fruits: [
+        { name: 'apple' },
+        { name: 'pear' },
+        { name: 'banana' }
+      ],
+      company: 'Chippewa Valley Fruit Growers'
+    }
+  })
+</script>
+<!-- Start with: https://vuejs.org/v2/guide/list.html#v-for-with-an-Object
 file:///Users/hilsonbj/Desktop/programming/github/vue-learning-projects/first-vue-app.html -->
 </body>
 </html>
