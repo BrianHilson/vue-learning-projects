@@ -737,7 +737,43 @@ var app11 = new Vue({
     }
   })
 </script>
-<!-- Start with: https://vuejs.org/v2/guide/list.html#v-for-with-an-Object
+
+<h3>V-for with an Object</h3>
+<div id="app-32">
+  <p>Just values</p>
+  <ul>
+    <li v-for="value in flight">
+      {{ value }}
+    </li>
+  </ul>
+  <p>Keys and values</p>
+  <ul>
+    <li v-for="(value, key) in flight">
+      {{ key + ': ' + value }}
+    </li>
+  </ul>
+  <p>Keys, values, and indices</p>
+  <ul>
+    <li v-for="(value, key, index) in flight">
+      {{ index + '. ' + key + ': ' + value }}
+    </li>
+  </ul>
+</div>
+<script>
+  var app32 = new Vue ({
+    el: '#app-32',
+    data: {
+      flight: {
+        leavingFrom: 'Minneapolis',
+        goingTo: 'Dallas',
+        departureTime: '11:00 am',
+        arrivalTime: '2:00 pm',
+        passengerCount: '158'
+      }
+    }
+  })
+</script>
+<!-- Start with: https://vuejs.org/v2/guide/list.html#Maintaining-State
 file:///Users/hilsonbj/Desktop/programming/github/vue-learning-projects/first-vue-app.html -->
 </body>
 </html>
