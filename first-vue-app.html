@@ -773,7 +773,29 @@ var app11 = new Vue({
     }
   })
 </script>
-<!-- Start with: https://vuejs.org/v2/guide/list.html#Maintaining-State
+
+<h4>V-for with key</h4>
+<div id="app-33">
+  <ul>
+    <li v-for="bird in birds" v-bind:key="bird.name">
+      {{ bird.name }}
+    </li>
+  </ul>
+</div>
+<script>
+  var app33 = new Vue ({
+    el: '#app-33',
+    data: {
+      birds: [
+        { name: 'robin' },
+        { name: 'cardinal' },
+        { name: 'blue jay' },
+        { name: 'yellow bellied sap sucker' }
+      ]
+    }
+  })
+</script>
+<!-- Start with: https://vuejs.org/v2/guide/list.html#Array-Change-Detection
 file:///Users/hilsonbj/Desktop/programming/github/vue-learning-projects/first-vue-app.html -->
 </body>
 </html>
