@@ -795,7 +795,42 @@ var app11 = new Vue({
     }
   })
 </script>
-<!-- Start with: https://vuejs.org/v2/guide/list.html#Array-Change-Detection
+
+<h3>Array Change Detection</h3>
+<h4>Mutation methods</h4>
+Vue listens to array mutations including push(), pop(), shift(), unshift(), splice(), sort(), and reverse().
+
+<h4>Replacing an Array</h4>
+Non-mutating methods such as filter(), concat(), and slice() can also be used to update a list by replacing the current list with a new one.
+
+<div id="app-34">
+  <ul>
+    <li v-for="tree in trees" v-bind:key="tree.name">
+      {{ tree.name }}
+    </li>
+  </ul>
+</div>
+<script>
+  var app35 = new Vue ({
+    el: '#app-34',
+    data: {
+      trees: [
+        { name: 'maple' },
+        { name: 'elm' },
+        { name: 'oak' },
+      ]
+    }
+  })
+
+  moreTrees = [
+    { name: 'birch' },
+    { name: 'pine' },
+    { name: 'ash' }
+  ];
+
+  app35.trees = app35.trees.concat(moreTrees);
+</script>
+<!-- Start with: https://vuejs.org/v2/guide/list.html#Displaying-Filtered-Sorted-Results
 file:///Users/hilsonbj/Desktop/programming/github/vue-learning-projects/first-vue-app.html -->
 </body>
 </html>
