@@ -891,7 +891,93 @@ Non-mutating methods such as filter(), concat(), and slice() can also be used to
   })
 </script>
 
-<!-- Start with: https://vuejs.org/v2/guide/list.html#Displaying-Filtered-Sorted-Results
+<h3>V-for with template</h3>
+<div id="app-39">
+  <ul>
+    <template v-for="tree in trees">
+      <li>{{ tree.name }}</li>
+    </template>
+  </ul>
+</div>
+<script>
+  var app39 = new Vue ({
+    el: '#app-39',
+    data: {
+      trees: [
+        { name: 'maple' },
+        { name: 'elm' },
+        { name: 'oak' },
+      ]
+    }
+  })
+</script>
+
+<h3>V-for with component</h3>
+<div id="app-40">
+  <form v-on:submit.prevent="addNewTodo">
+    <label for="new-todo">Add todo</label>
+    <input 
+      type="text"
+      v-model="newTodoText"
+      id="new-todo"
+      placeholder="Enter a todo item."
+    >
+    <button>Add</button>
+  </form>
+  <ul>
+    <li
+      is="todo-item"
+      v-for="(todo, index) in todos"
+      v-bind:key="todo.id"
+      v-bind:title="todo.title"
+      v-on:remove="todos.splice(index, 1)"
+    ></li>
+  </ul>
+</div>
+<script>
+  Vue.component('todo-item', {
+    template: '\
+      <li>\
+        {{ title }}\
+        <button v-on:click="$emit(\'remove\')">Remove</button>\
+      </li>\
+    ',
+    props: ['title']
+  })
+
+  var app40 = new Vue ({
+    el: '#app-40',
+    data: {
+      todos: [
+        {
+          id: 1,
+          title: 'Do the laundry'
+        },
+        {
+          id: 2,
+          title: 'Trim the hedges'
+        },
+        {
+          id: 3,
+          title: 'Polish the silver'
+        }
+      ],
+      newTodoText: '',
+      nextTodoId: 4
+    },
+    methods: {
+      addNewTodo: function() {
+        this.todos.push({
+          id: this.nextTodoId++,
+          title: this.newTodoText
+        });
+        this.newTodoText = '';
+      }
+    }
+  })
+</script>
+
+<!-- Start with: https://vuejs.org/v2/guide/events.html#Listening-to-Events
 file:///Users/hilsonbj/Desktop/programming/github/vue-learning-projects/first-vue-app.html -->
 </body>
 </html>
