@@ -992,6 +992,21 @@ Non-mutating methods such as filter(), concat(), and slice() can also be used to
   })
 </script>
 
+<h3>Method Event Handlers</h3>
+<div id="app-42">
+  <button v-on:click="tellTime">Get current time</button>
+</div>
+<script>
+  var app42 = new Vue ({
+    el: '#app-42',
+    methods: {
+      tellTime: function() {
+        alert('The time is ' + (new Date()));
+      }
+    }
+  })
+</script>
+
 <!-- Start with: https://vuejs.org/v2/guide/events.html#Method-Event-Handlers
 file:///Users/hilsonbj/Desktop/programming/github/vue-learning-projects/first-vue-app.html -->
 </body>
