@@ -1000,8 +1000,55 @@ Non-mutating methods such as filter(), concat(), and slice() can also be used to
   var app42 = new Vue ({
     el: '#app-42',
     methods: {
-      tellTime: function() {
+      tellTime: function(event) {
         alert('The time is ' + (new Date()));
+
+        if (event) {
+          console.log(event.target.tagName);
+        }
+      }
+    }
+  })
+</script>
+
+<h3>Methods in Inline Handlers</h3>
+<div id="app-43">
+  <p>{{ msg }}</p>
+  <button v-on:click="setMessage('Hello!', $event)">Say hello</button>
+  <button v-on:click="setMessage('Goodbye!', $event)">Say goodbye</button>
+</div>
+<script>
+  var app43 = new Vue ({
+    el: '#app-43',
+    data: {
+      msg: 'Message goes here.'
+    },
+    methods: {
+      setMessage: function(message, event) {
+        this.msg = message;
+        console.log(event);
+      },
+    }
+  })
+</script>
+
+<h3>Event Modifiers</h3>
+<h4>Preventing default</h4>
+<div id="app-44">
+  <form action="/" v-on:submit.prevent="onSubmit">
+    <p>{{ msg }}</p>
+    <button>Submitting this form</button>
+  </form>
+</div>
+<script>
+  var app44 = new Vue ({
+    el: '#app-44',
+    data: {
+      msg: 'Message goes here.'
+    },
+    methods: {
+      onSubmit: function() {
+        this.msg = 'This form was prevented from submitting.'
       }
     }
   })
