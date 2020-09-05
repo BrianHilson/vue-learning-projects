@@ -1054,7 +1054,105 @@ Non-mutating methods such as filter(), concat(), and slice() can also be used to
   })
 </script>
 
-<!-- Start with: https://vuejs.org/v2/guide/events.html#Method-Event-Handlers
+<h4>Stopping propogation</h4>
+<div id="app-45">
+  <div v-on:click="notify">
+    <button v-on:click.stop="doNotPropogate">Click here</button>
+  </div>
+</div>
+<script>
+  var app45 = new Vue ({
+    el: '#app-45',
+    methods: {
+      notify: function() {
+        alert('You shouldn\'t see this.')
+      },
+      doNotPropogate: function() {
+        alert('You should see this.');
+      }
+    }
+  })
+</script>
+
+<h3>Key Modifiers</h3>
+<div id="app-46">
+  <p>{{ msg }}</p>
+  <input type="text" v-on:keyup.enter="changeMessage">
+</div>
+<script>
+  var app46 = new Vue ({
+    el: '#app-46',
+    data: {
+      msg: 'Some message'
+    },
+    methods: {
+      changeMessage: function(event) {
+        this.msg = event.target.value;
+      }
+    }
+  })
+</script>
+
+<h3>System Modifier Keys</h3>
+<style>
+  .orange-box {
+    background-color: orange;
+    width: 100px;
+    height: 100px;
+  }
+</style>
+<div id="app-47">
+  <p>META + click on box to change color. This will work with other keys pressed as well.</p>
+  <div class="orange-box" v-on:click.meta="changeColor"></div>
+</div>
+<script>
+  var app47 = new Vue ({
+    el: '#app-47',
+    methods: {
+      changeColor: function(event) {
+        event.preventDefault();
+        event.target.style.backgroundColor = 'purple';
+      }
+    }
+  })
+</script>
+
+<h4>Exact modifier</h4>
+<div id="app-48">
+  <p>META + click on box to change color. This won't work if other keys are pressed at the same time.</p>
+  <div class="orange-box" v-on:click.meta.exact="changeColor"></div>
+</div>
+<script>
+  var app48 = new Vue ({
+    el: '#app-48',
+    methods: {
+      changeColor: function(event) {
+        event.preventDefault();
+        event.target.style.backgroundColor = 'purple';
+      }
+    }
+  })
+</script>
+
+<h2>Form Input Bindings</h2>
+<h3>Basic Usage</h3>
+<h4>Text</h4>
+<div id="app-49">
+  <input type="text" v-model="msg">
+  <p>{{ msg }}</p>
+</div>
+<script>
+  var app49 = new Vue ({
+    el: '#app-49',
+    data: {
+      msg: 'Some message'
+    }
+  })
+</script>
+
+<h5>Multi-line text</h5>
+
+<!-- Start with: https://vuejs.org/v2/guide/forms.html#Multiline-text
 file:///Users/hilsonbj/Desktop/programming/github/vue-learning-projects/first-vue-app.html -->
 </body>
 </html>
