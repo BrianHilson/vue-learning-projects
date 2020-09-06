@@ -5,6 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vue App</title>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    body {
+      max-width: 800px;
+      font-family: Arial, Helvetica, "Roboto", sans-serif;
+      color: #333;
+      margin: auto;
+    }
+    
+    h2 {
+      color: #1d57df;
+      text-decoration: underline;
+      margin-top: 3rem;
+      font-weight: 400;
+    }
+  </style>
 </head>
 <body>
 <h1>Vue examples</h1>
@@ -1150,9 +1165,31 @@ Non-mutating methods such as filter(), concat(), and slice() can also be used to
   })
 </script>
 
-<h5>Multi-line text</h5>
+<h4>Multi-line text</h4>
+<div id="app-50">
+  <p>Here's some multi-line text:</p>
+  <p style="white-space:pre;">{{ message }}</p>
+  <textarea v-model="message" placeholder="Add some text."></textarea>
+</div>
+<script>
+
+  var app50 = new Vue({
+    el: '#app-50',
+    data: {
+      message: ''
+    }
+  });
+
+</script>
+
 
 <!-- Start with: https://vuejs.org/v2/guide/forms.html#Multiline-text
 file:///Users/hilsonbj/Desktop/programming/github/vue-learning-projects/first-vue-app.html -->
+<script>
+
+  // scroll to bottom
+  window.scrollTo(0,document.body.scrollHeight);
+
+</script>
 </body>
 </html>
