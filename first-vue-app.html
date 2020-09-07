@@ -1182,9 +1182,69 @@ Non-mutating methods such as filter(), concat(), and slice() can also be used to
 
 </script>
 
+<h4>Single Checkbox</h4>
+<div id="app-51">
+  <p>Single checkbox, boolean value</p>
+  <input type="checkbox" id="some-value" v-model="someValue">
+  <label for="some-value">{{ someValue }}</label>
+</div>
+<script>
+
+var app51 = new Vue({
+  el: '#app-51',
+  data: {
+    someValue: false
+  }
+});
+
+</script>
+
+<h4>Multiple Checkboxes</h4>
+<div id="app-52">
+  <p>Multiple checkboxes bound to the same array</p>
+  <input type="checkbox" id="banana" value="banana" v-model="checkedFruit">
+  <label for="banana">banana</label>
+  <input type="checkbox" id="pear" value="pear" v-model="checkedFruit">
+  <label for="pear">pear</label>
+  <input type="checkbox" id="apple" value="apple" v-model="checkedFruit">
+  <label for="apple">apple</label>
+  <input type="checkbox" id="grape" value="grape" v-model="checkedFruit">
+  <label for="grape">grape</label>
+  <p>{{ checkedFruit }}</p>
+</div>
+<script>
+
+  var app52 = new Vue({
+    el: '#app-52',
+    data: {
+      checkedFruit: []
+    }
+  });
+
+</script>
+
+<h4>Radio</h4>
+<div id="app-53">
+  <input type="radio" id="banana" value="banana" v-model="picked">
+  <label for="banana">banana</label>
+  <input type="radio" id="strawberry" value="strawberry" v-model="picked">
+  <label for="strawberry">strawberry</label>
+  <p>Picked: {{ picked }}</p>
+</div>
+<script>
+
+  var app53 = new Vue({
+    el: '#app-53',
+    data: {
+      picked: []
+    }
+  });
+
+</script>
+
 
 <!-- Start with: https://vuejs.org/v2/guide/forms.html#Multiline-text
-file:///Users/hilsonbj/Desktop/programming/github/vue-learning-projects/first-vue-app.html -->
+file:///home/brianhilson/Desktop/github_repos/vue-learning-projects/first-vue-app.html -->
 <script>
 
   // scroll to bottom
