@@ -1245,6 +1245,7 @@ var app51 = new Vue({
 <h4>Select</h4>
 <div id="app-54">
   <select v-model="selected">
+    <option disabled value="">Please select one</option>
     <option value="apple">apple</option>
     <option value="pear">pear</option>
     <option value="grape">grape</option>
@@ -1263,6 +1264,51 @@ var app51 = new Vue({
 
 </script>
 
+<h4>Multiple Select</h4>
+<div id="app-55">
+  <select v-model="selected" multiple>
+    <option disabled value="">Please select as many as you like</option>
+    <option value="apple">apple</option>
+    <option value="pear">pear</option>
+    <option value="grape">grape</option>
+    <option value="banana">banana</option>
+  </select>
+  <p>Selected: {{ selected }}</p>
+</div>
+<script>
+
+  var app55 = new Vue({
+    el: '#app-55',
+    data: {
+      selected: []
+    }
+  });
+
+</script>
+
+<h4>Select with dynamic options</h4>
+<div id="app-56">
+  <select v-model="selected">
+    <option v-bind:value="option.value" v-for="option in options" v-bind:key="option.text">{{ option.text }}</option>
+  </select>
+  <p>Selected: {{ selected }}</p>
+</div>
+<script>
+
+  var app56 = new Vue({
+    el: '#app-56',
+    data: {
+      selected: [],
+      options: [
+        { text: 'banana', value: 'bn' },
+        { text: 'apple', value: 'ap' },
+        { text: 'pear', value: 'pr' },
+        { text: 'grape', value: 'gr' }
+      ]
+    }
+  });
+
+</script>
 <!-- Start with: https://vuejs.org/v2/guide/forms.html#Multiline-text
 file:///home/brianhilson/Desktop/github_repos/vue-learning-projects/first-vue-app.html -->
 <script>
