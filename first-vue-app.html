@@ -1242,6 +1242,26 @@ var app51 = new Vue({
 
 </script>
 
+<h4>Select</h4>
+<div id="app-54">
+  <select v-model="selected">
+    <option value="apple">apple</option>
+    <option value="pear">pear</option>
+    <option value="grape">grape</option>
+    <option value="banana">banana</option>
+  </select>
+  <p>Selected: {{ selected }}</p>
+</div>
+<script>
+
+  var app54 = new Vue({
+    el: '#app-54',
+    data: {
+      selected: []
+    }
+  });
+
+</script>
 
 <!-- Start with: https://vuejs.org/v2/guide/forms.html#Multiline-text
 file:///home/brianhilson/Desktop/github_repos/vue-learning-projects/first-vue-app.html -->
