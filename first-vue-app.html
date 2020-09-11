@@ -1309,7 +1309,24 @@ var app51 = new Vue({
   });
 
 </script>
-<!-- Start with: https://vuejs.org/v2/guide/forms.html#Multiline-text
+
+<h3>Value Bindings</h3>
+<h4>Checkbox</h4>
+<div id="app-57">
+  <input type="checkbox" v-model="toggle" true-value="on" false-value="off">
+  <p>{{ toggle }}</p>
+</div>
+<script>
+
+  var app57 = new Vue({
+    el: '#app-57',
+    data: {
+      toggle: ''
+    }
+  });
+
+</script>
+<!-- Start with: https://vuejs.org/v2/guide/forms.html#Checkbox-1
 file:///home/brianhilson/Desktop/github_repos/vue-learning-projects/first-vue-app.html -->
 <script>
 
