@@ -1326,7 +1326,33 @@ var app51 = new Vue({
   });
 
 </script>
-<!-- Start with: https://vuejs.org/v2/guide/forms.html#Checkbox-1
+
+<h4>Radio</h4>
+<div id="app-58">
+  <form>
+    <input type="radio" name="fruit" id="banana" v-bind:value="banana" v-model="pickedFruit">
+    <label for="banana"></label>
+    <input type="radio" name="fruit" id="orange" v-bind:value="orange">
+    <label for="orange"></label>
+    <input type="radio" name="fruit" id="grape" v-bind:value="grape">
+    <label for="grape"></label>  
+  </form>
+  <p>Picked fruit: {{ pickedFruit }}</p>
+</div>
+<script>
+
+  var app58 = new Vue({
+    el: '#app-58',
+    data: {
+      banana: '',
+      orange: '',
+      grape: '',
+      pickedFruit: []
+    }
+  });
+
+</script>
+<!-- Start with: https://vuejs.org/v2/guide/forms.html#Select-Options
 file:///home/brianhilson/Desktop/github_repos/vue-learning-projects/first-vue-app.html -->
 <script>
 
