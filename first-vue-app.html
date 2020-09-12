@@ -1331,11 +1331,11 @@ var app51 = new Vue({
 <div id="app-58">
   <form>
     <input type="radio" name="fruit" id="banana" v-bind:value="banana" v-model="pickedFruit">
-    <label for="banana"></label>
-    <input type="radio" name="fruit" id="orange" v-bind:value="orange">
-    <label for="orange"></label>
-    <input type="radio" name="fruit" id="grape" v-bind:value="grape">
-    <label for="grape"></label>  
+    <label for="banana">banana</label>
+    <input type="radio" name="fruit" id="orange" v-bind:value="orange" v-model="pickedFruit">
+    <label for="orange">orange</label>
+    <input type="radio" name="fruit" id="grape" v-bind:value="grape" v-model="pickedFruit">
+    <label for="grape">grape</label>  
   </form>
   <p>Picked fruit: {{ pickedFruit }}</p>
 </div>
@@ -1344,10 +1344,62 @@ var app51 = new Vue({
   var app58 = new Vue({
     el: '#app-58',
     data: {
-      banana: '',
-      orange: '',
-      grape: '',
-      pickedFruit: []
+      banana: 'banana surprise',
+      orange: 'orange creamsicle',
+      grape: 'super grape',
+      pickedFruit: ''
+    }
+  });
+
+</script>
+
+<h4>Select</h4>
+<div id="app-59">
+  <select v-model="pickedVeggie">
+    <option :value="{ tomato: 'grape tomato' }">tomato</option>
+    <option :value="{ bean: 'green bean' }">bean</option>
+    <option :value="{ corn: 'sweet corn' }">tomato</option>
+  </select>
+  <p>Selected vegetable: {{ pickedVeggie }}</p>
+</div>
+<script>
+
+  var app59 = new Vue({
+    el: '#app-59',
+    data: {
+      pickedVeggie: ''
+    }
+  });
+
+</script>
+
+<h3>Modifiers</h3>
+<h4>.lazy</h4>
+<h5>Change v-model for an element on `change` instead of `input`</h5>
+<div id="app-60">
+  <input type="text" v-model="msg" placeholder="type something">
+  <p>This changes every time you change the input: {{ msg }}</p>
+</div>
+<script>
+
+  var app60 = new Vue({
+    el: '#app-60',
+    data: {
+      msg: ''
+    }
+  });
+
+</script>
+<div id="app-61">
+  <input type="text" v-model.lazy="msg" placeholder="type something">
+  <p>This changes after you leave the input (blur): {{ msg }}</p>
+</div>
+<script>
+
+  var app61 = new Vue({
+    el: '#app-61',
+    data: {
+      msg: ''
     }
   });
 
