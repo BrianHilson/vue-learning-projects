@@ -1404,6 +1404,33 @@ var app51 = new Vue({
   });
 
 </script>
+
+<h4>.number</h4>
+<div id="app-62">
+  <input type="number" v-model="someNumber">
+  <p>Typeof number without .number modifier: {{ typeOfSomeNumber }}</p>
+  <input type="number" v-model.number="anotherNumber">
+  <p>Typeof number with .number modifier: {{ typeOfAnotherNumber }}</p>
+</div>
+<script>
+
+  var app63 = new Vue({
+    el: '#app-62',
+    data: {
+      someNumber: '',
+      anotherNumber: ''
+    },
+    computed: {
+      typeOfSomeNumber: function() {
+        return typeof this.someNumber;
+      },
+      typeOfAnotherNumber: function() {
+        return typeof this.anotherNumber;
+      }
+    }
+  });
+
+</script>
 <!-- Start with: https://vuejs.org/v2/guide/forms.html#Select-Options
 file:///home/brianhilson/Desktop/github_repos/vue-learning-projects/first-vue-app.html -->
 <script>
