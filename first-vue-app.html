@@ -1431,6 +1431,53 @@ var app51 = new Vue({
   });
 
 </script>
+
+<h4>.trim</h4>
+<div id="app-63">
+  <input type="text" v-model.trim="message">
+  <p>{{ message }}</p>
+</div>
+<script>
+
+  var app63 = new Vue({
+    el: '#app-63',
+    data: {
+      message: ''
+    }
+  });
+
+</script>
+
+<h2>Components Basics</h2>
+<h3>Base Example</h3>
+<div id="app-64">
+  <button-time></button-time>
+  <button-time></button-time>
+  <button-time></button-time>
+</div>
+<script>
+
+  Vue.component('button-time', {
+    data: function () {
+      return {
+        time: 'Click me'
+      }
+    },
+    methods: {
+      getTime: function() {
+        this.time = 'Click at ' + new Date()
+      }
+    },
+    template: '<button v-on:click="getTime">{{ time }}</button>'
+  })
+
+  var app64 = new Vue({ 
+    el: '#app-64' 
+  });
+
+</script>
+
+
 <!-- Start with: https://vuejs.org/v2/guide/forms.html#Select-Options
 file:///home/brianhilson/Desktop/github_repos/vue-learning-projects/first-vue-app.html -->
 <script>
