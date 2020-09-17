@@ -1477,6 +1477,31 @@ var app51 = new Vue({
 
 </script>
 
+<h4>Data must be a function in components</h4>
+<div id="app-65">
+  <button-time-2></button-time-2>
+  <button-time-2></button-time-2>
+  <button-time-2></button-time-2>
+</div>
+<script>
+
+Vue.component('button-time-2', {
+    data: {
+      time: 'Click me'
+    },
+    methods: {
+      getTime: function() {
+        this.time = 'Click at ' + new Date()
+      }
+    },
+    template: '<button v-on:click="getTime">{{ time }}</button>'
+  })
+
+  var app65 = new Vue({
+    el: '#app-65'
+  });
+
+</script>
 
 <!-- Start with: https://vuejs.org/v2/guide/forms.html#Select-Options
 file:///home/brianhilson/Desktop/github_repos/vue-learning-projects/first-vue-app.html -->
