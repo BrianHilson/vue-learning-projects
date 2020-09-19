@@ -1477,7 +1477,7 @@ var app51 = new Vue({
 
 </script>
 
-<h4>Data must be a function in components</h4>
+<h4>Data must be a function in components - this won't work</h4>
 <div id="app-65">
   <button-time-2></button-time-2>
   <button-time-2></button-time-2>
@@ -1485,22 +1485,38 @@ var app51 = new Vue({
 </div>
 <script>
 
-Vue.component('button-time-2', {
-    data: {
-      time: 'Click me'
-    },
-    methods: {
-      getTime: function() {
-        this.time = 'Click at ' + new Date()
-      }
-    },
-    template: '<button v-on:click="getTime">{{ time }}</button>'
+// Vue.component('button-time-2', {
+//     data: {
+//       time: 'Click me'
+//     },
+//     methods: {
+//       getTime: function() {
+//         this.time = 'Click at ' + new Date()
+//       }
+//     },
+//     template: '<button v-on:click="getTime">{{ time }}</button>'
+//   })
+
+//   var app65 = new Vue({
+//     el: '#app-65'
+//   });
+
+</script>
+
+<h3>Passing data to child components with props</h3>
+<div id="app-66">
+  <card title="Easy cinnamon rolls"></card>
+  <card title="Super fluffy pancakes"></card>
+  <card title="Sunday morning coffee cake"></card>
+</div>
+<script>
+  Vue.component('card', {
+    props: ['title'],
+    template: '<h2>{{ title }}</h2>'
   })
-
-  var app65 = new Vue({
-    el: '#app-65'
-  });
-
+  var app66 = new Vue ({
+    el: '#app-66'
+  })
 </script>
 
 <!-- Start with: https://vuejs.org/v2/guide/forms.html#Select-Options
