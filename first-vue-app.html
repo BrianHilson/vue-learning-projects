@@ -1510,16 +1510,100 @@ var app51 = new Vue({
   <card title="Sunday morning coffee cake"></card>
 </div>
 <script>
+
   Vue.component('card', {
     props: ['title'],
-    template: '<h2>{{ title }}</h2>'
+    template: '<article><h2>{{ title }}</h2></article>'
   })
+
   var app66 = new Vue ({
     el: '#app-66'
   })
+
 </script>
 
-<!-- Start with: https://vuejs.org/v2/guide/forms.html#Select-Options
+<h4>Rendered using data</h4>
+<div id="app-67">
+  <card v-for="card in cards" v-bind:key="card.id" v-bind:title="card.title"></card>
+</div>
+<script>
+
+  var app67 = new Vue ({
+    el: '#app-67',
+    data: {
+      cards: [
+        { id: 1, title: '10 quick weekday meals'},
+        { id: 2, title: 'Your new favorite cocktail'},
+        { id: 3, title: 'Sourdough isn\'t just for hipsters anymore'}
+      ]
+    }
+  })
+
+</script>
+<h4>A Single Root Element</h4>
+<div id="app-68">
+  <card-2 v-for="card in cards" v-bind:key="card.id" v-bind:card="card"></card-2>
+</div>
+<script>
+
+  Vue.component('card-2', {
+    props: ['card'],
+    template: `
+      <article>
+        <h2>{{ card.title }}</h2>
+        <p>{{ card.content }}</p>
+      </article>`
+  })
+
+  var app68 = new Vue ({
+    el: '#app-68',
+    data: {
+      cards: [
+          { id: 1, title: '10 quick weekday meals', content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis quae, mollitia magnam cupiditate iusto consectetur consequatur, nesciunt dolores assumenda odio ab perspiciatis, ipsam ea quod. Blanditiis tenetur vero corporis qui.'},
+          { id: 2, title: 'Your new favorite cocktail', content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis quae, mollitia magnam cupiditate iusto consectetur consequatur, nesciunt dolores assumenda odio ab perspiciatis, ipsam ea quod. Blanditiis tenetur vero corporis qui.'},
+          { id: 3, title: 'Sourdough isn\'t just for hipsters anymore', content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis quae, mollitia magnam cupiditate iusto consectetur consequatur, nesciunt dolores assumenda odio ab perspiciatis, ipsam ea quod. Blanditiis tenetur vero corporis qui.'}
+        ]
+    }
+  })
+</script>
+
+<h3>Listen to Child Component Events</h3>
+<div id="app-69" :style="{ color: color_value }">
+  <card-3 v-for="card in cards" v-bind:key="card.id" v-bind:card="card" v-on:darkencolor="darkenColorAction"></card-3>
+</div>
+<script>
+
+  Vue.component('card-3', {
+    props: ['card'],
+    template: `
+      <article>
+        <h2>{{ card.title }}</h2>
+        <p>{{ card.content }}</p>
+        <button v-on:click="$emit('darkencolor')">Darken color</button>
+      </article>`
+  })
+
+  var app69 = new Vue ({
+    el: '#app-69',
+    data: {
+      cards: [
+          { id: 1, title: '10 quick weekday meals', content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis quae, mollitia magnam cupiditate iusto consectetur consequatur, nesciunt dolores assumenda odio ab perspiciatis, ipsam ea quod. Blanditiis tenetur vero corporis qui.'},
+          { id: 2, title: 'Your new favorite cocktail', content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis quae, mollitia magnam cupiditate iusto consectetur consequatur, nesciunt dolores assumenda odio ab perspiciatis, ipsam ea quod. Blanditiis tenetur vero corporis qui.'},
+          { id: 3, title: 'Sourdough isn\'t just for hipsters anymore', content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis quae, mollitia magnam cupiditate iusto consectetur consequatur, nesciunt dolores assumenda odio ab perspiciatis, ipsam ea quod. Blanditiis tenetur vero corporis qui.'}
+        ],
+      rgba_value: 255,
+      color_value: 'rgb(255,255,255)'
+    },
+    methods: {
+      darkenColorAction: function() {
+        this.rgba_value = (this.rgba_value > 0) ? (this.rgba_value - 5) : 0;
+        this.color_value = `rgba(${this.rgba_value},${this.rgba_value},${this.rgba_value})`
+      }
+    }
+  })
+</script>
+
+<!-- Start with: https://vuejs.org/v2/guide/components.html#Emitting-a-Value-With-an-Event
 file:///home/brianhilson/Desktop/github_repos/vue-learning-projects/first-vue-app.html -->
 <script>
 
