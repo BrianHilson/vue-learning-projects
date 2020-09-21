@@ -1603,6 +1603,29 @@ var app51 = new Vue({
   })
 </script>
 
+<h3>Using v-model on components</h3>
+<div id="app-70">
+  <special-input v-model="someText"></special-input>
+  <p>{{ someText }}</p>
+</div>
+<script>
+
+  Vue.component('special-input', {
+    props: ['value'],
+    template: `
+      <input v-bind:value="value" v-on:input="$emit('input', $event.target.value)">
+    `
+  })
+
+  var app70 = new Vue({
+    el: '#app-70',
+    data: {
+      someText: ''
+    }
+  });
+
+</script>
+
 <!-- Start with: https://vuejs.org/v2/guide/components.html#Emitting-a-Value-With-an-Event
 file:///home/brianhilson/Desktop/github_repos/vue-learning-projects/first-vue-app.html -->
 <script>
