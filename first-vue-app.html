@@ -1626,6 +1626,32 @@ var app51 = new Vue({
 
 </script>
 
+<h3>Content Distribution with Slots</h3>
+<div id="app-71">
+  <custom-quote-content>Give a man a program, frustrate him for a day.
+    Teach a man to program, frustrate him for a lifetime.</custom-quote-content>
+  <custom-quote-author>- Muhammad Waseem</custom-quote-author>
+</div>
+<script>
+  Vue.component('custom-quote-content', {
+    template: `
+      <quote><slot></slot></quote>
+    `
+  })
+
+  Vue.component('custom-quote-author', {
+    template: `
+      <p><strong><slot></slot></strong></p>
+    `
+  })
+
+
+  var app71 = new Vue({
+    el: '#app-71'
+  });
+
+</script>
+
 <!-- Start with: https://vuejs.org/v2/guide/components.html#Emitting-a-Value-With-an-Event
 file:///home/brianhilson/Desktop/github_repos/vue-learning-projects/first-vue-app.html -->
 <script>
