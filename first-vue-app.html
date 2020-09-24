@@ -1635,7 +1635,7 @@ var app51 = new Vue({
 <script>
   Vue.component('custom-quote-content', {
     template: `
-      <quote><slot></slot></quote>
+      <blockquote><slot></slot></blockquote>
     `
   })
 
@@ -1711,6 +1711,29 @@ var app51 = new Vue({
       }
     }
   });
+</script>
+
+<h3>DOM Template Parsing Caveats</h3>
+<h4>Some elements have restrictions on what elements can appear inside of them, so you can us v-is with a component</h4>
+<div id="app73">
+  <ul>
+    <li is="special-list-item">Some special content</li>
+  </ul>
+</div>
+<script>
+
+  Vue.component('special-list-item', {
+    template: `
+      <li>
+        <p><strong><slot></slot></strong></p>
+      </li>
+    `
+  })
+
+  var app73 = new Vue({
+    el: '#app73'
+  });
+
 </script>
 
 <!-- Start with: https://vuejs.org/v2/guide/components.html#Emitting-a-Value-With-an-Event
